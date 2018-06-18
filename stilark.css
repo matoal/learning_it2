@@ -1,18 +1,9 @@
 body {
+  background-color: #323232;
   font-family: "Century Gothic", Arial, sans-serif;
   font-size: 14px;
+  color: #f2f2f2;
 }
-
-p {
-  background-color: #f05a3f;
-  padding: 20px;
-}
-p:hover{
+img:hover{
   cursor: pointer;
-}
-.gul{
-  border:solid yellow 2px;
-}
-.bla{
-  border:solid blue 2px;
 }

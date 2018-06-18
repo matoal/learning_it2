@@ -2,23 +2,38 @@
 <html>
   <head>
       <meta charset="UTF-8">
-      <title>TITLE</title>
+      <title>Monty Hall</title>
       <link rel="stylesheet" href="stilark.css">
   </head>
   <body>
-    <p> Trykk på meg! </p>
+    <h1>Mont Hall</h1>
+    <p>Hvilken dør vil du velge?</p>
+    <img id="r" src="bilder/rod.png" alt="Dør" width="227" height="324">
+    <img id="g" src="bilder/gronn.png" alt="Dør" width="227" height="324">
+    <img id="b" src="bilder/blaa.png" alt="Dør" width="227" height="324">
   </body>
-  <script>
-    var avsnittEl = document.querySelector("p");
-    avsnittEl.addEventListener("click", nytekst);
 
-    function nytekst() {
-      avsnittEl.innerHTML="Du trykket på meg";
-      if(avsnittEl.className=="gul"){
-        avsnittEl.className="bla";
-      }else{
-      avsnittEl.className="gul";
+  <script>
+    var rodDorEl = document.querySelector("#r");
+    var gronnDorEl = document.querySelector("#g");
+    var blaaDorEl = document.querySelector("#b");
+
+    rodDorEl.addEventListener("click", sjekkDor);
+    gronnDorEl.addEventListener("click", sjekkDor);
+    blaaDorEl.addEventListener("click", sjekkDor);
+
+    function sjekkDor(e) {
+      var trykketDor = e.target;
+      console.log(trykketDor.id);
+
+      if (trykketDor.id==="r") {
+        console.log("Du trykket på den røde døren");
+      }else if (trykketDor.id==="b") {
+        console.log("Du trykket på den blå døren");
+      } else {
+        console.log("Du trykket på den grønne døren");
       }
     }
+
   </script>
 </html>
