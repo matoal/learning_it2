@@ -24,44 +24,77 @@
     blaaDorEl.addEventListener("click", sjekkDor);
     //velger tilfeldig dør som har bil
     var dorNr = Math.floor(Math.random()*3)+1;
-
-    //funksjon som ser om trykket dør er bil og viser bilde av bil eller geit
-    function sjekkDor(e) {
-
-      var trykketDor = e.target;
-      if (trykketDor.id==="r") {
-        if(dorNr===1){
-          trykketDor.src="bilder/bil.png";
-        } else{
-          trykketDor.src="bilder/geit.png"
-        }
-
-      }else if (trykketDor.id==="g") {
-        if(dorNr===2){
-          trykketDor.src="bilder/bil.png";
-        } else{
-          trykketDor.src="bilder/geit.png"
-        }
-
-      } else {
-        if(dorNr===3){
-          trykketDor.src="bilder/bil.png";
-        } else{
-          trykketDor.src="bilder/geit.png"
-        }
-      }
-
-      //Skriver ut vinnertekst
-      var bodyEl = document.querySelector("body");
-      var nyttAvsnitt = document.createElement("p");
-      var lastPart = trykketDor.src.split("/").pop();
-      if(lastPart=="bil.png"){
-        nyttAvsnitt.innerHTML="Du vant en bil!";
-      } else {
-        nyttAvsnitt.innerHTML="Æsj du fikk en geit...";
-      }
-      bodyEl.appendChild(nyttAvsnitt);
+    if(dorNr ==1){
+      var rodPremieSrc="bilder/bil.png";
+    } else {
+      var rodPremieSrc="bilder/geit.png";
+    }
+    if(dorNr ==2){
+      var gronnPremieSrc="bilder/bil.png";
+    } else {
+      var gronnPremieSrc="bilder/geit.png";
+    }
+    if(dorNr ==3){
+      var blaaPremieSrc="bilder/bil.png";
+    } else {
+      var blaaPremieSrc="bilder/geit.png";
     }
 
+    var firstClick=true;
+    //funksjon som ser om trykket dør er bil og viser bilde av bil eller geit
+    function sjekkDor(e) {
+      var trykketDor = e.target;
+      if(firstClick){
+        if (trykketDor.id==="r") {
+          if(gronnPremieSrc=="bilder/geit.png"){
+            gronnDorEl.src=gronnPremieSrc;
+            gronnDorEl.removeEventListener("click", sjekkDor)
+          } else{
+            blaaDorEl.src=blaaPremieSrc;
+            blaaDorEl.removeEventListener("click", sjekkDor)
+          }
+        }else if (trykketDor.id==="g") {
+          if(rodPremieSrc=="bilder/geit.png"){
+            rodDorEl.src=rodPremieSrc;
+            rodDorEl.removeEventListener("click", sjekkDor)
+          } else{
+            blaaDorEl.src=blaaPremieSrc;
+            blaaDorEl.removeEventListener("click", sjekkDor)
+          }
+        } else {
+          if(gronnPremieSrc=="bilder/geit.png"){
+            gronnDorEl.src=gronnPremieSrc;
+            gronnDorEl.removeEventListener("click", sjekkDor)
+          } else{
+            rodDorEl.src=rodPremieSrc;
+            rodDorEl.removeEventListener("click", sjekkDor)
+          }
+        }
+        var bodyEl = document.querySelector("body");
+        var bytteEl = document.createElement("p");
+        bytteEl.innerHTML="Vil du beholde eller bytte? Klikk på nytt"
+        bodyEl.appendChild(bytteEl);
+        firstClick=false;
+      }else{
+        //andre trykk, viser bildet av premien bak endelig dør
+        if (trykketDor.id==="r") {
+          trykketDor.src=rodPremieSrc;
+        } else if (trykketDor.id==="g") {
+          trykketDor.src=gronnPremieSrc;
+        }else{
+          trykketDor.src=blaaPremieSrc;
+        }
+      //Skriver ut vinnertekst
+        var bodyEl = document.querySelector("body");
+        var nyttAvsnitt = document.createElement("p");
+        var lastPart = trykketDor.src.split("/").pop();
+        if(lastPart=="bil.png"){
+          nyttAvsnitt.innerHTML="Du vant en bil!";
+        } else {
+          nyttAvsnitt.innerHTML="Æsj du fikk en geit...";
+        }
+        bodyEl.appendChild(nyttAvsnitt);
+      }
+    }
   </script>
 </html>
