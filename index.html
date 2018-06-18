@@ -6,20 +6,33 @@
       <link rel="stylesheet" href="stilark.css">
   </head>
   <body>
-    <p id="xPosisjon"> X-posisjon: </p>
-    <p id="yPosisjon"> Y-posisjon: </p>
+    <p id="tall">tallet du skal gjette bokstaven til er: </p>
+    <p id="trykket">keyCode: </p>
+    <p id="forsok">Antall forsøk brukt:  </p>
   </body>
 
   <script>
-    var xPosisjonEl = document.querySelector("#xPosisjon");
-    var yPosisjonEl = document.querySelector("#yPosisjon");
     var bodyEl = document.querySelector("body");
+    var trykketEl = document.querySelector("#trykket");
+    var tallEl = document.querySelector("#tall");
+    var forsokEl = document.querySelector("#forsok");
+    var antallForsok=0;
+    tallet = Math.floor(Math.random()*26) + 65;
+    tallEl.innerHTML +=tallet;
+    bodyEl.addEventListener("keydown", sjekkKnapp);
 
-    bodyEl.addEventListener("mousemove", visPosisjon);
-
-    function visPosisjon(e) {
-      xPosisjonEl.innerHTML = "X-posisjon: " + e.clientX;
-      yPosisjonEl.innerHTML = "Y-posisjon: " + e.clientY
+    function sjekkKnapp(e) {
+      var tippet = e.keyCode;
+      trykketEl.innerHTML="keyCode: "+ e.keyCode + " "+ String.fromCharCode(tippet);
+      antallForsok ++;
+      forsokEl.innerHTML = "Antall forsøk: " + antallForsok;
+      if(tippet===tallet){
+        vinnerTekst = document.createElement("p");
+        vinnerTekst.innerHTML = "Du gjettet riktig på " + antallForsok + " forsøk";
+        bodyEl.removeEventListener("keydown", sjekkKnapp);
+        bodyEl.appendChild(vinnerTekst);
+      }
     }
+
   </script>
 </html>
