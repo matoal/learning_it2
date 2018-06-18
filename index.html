@@ -6,10 +6,20 @@
       <link rel="stylesheet" href="stilark.css">
   </head>
   <body>
-
+    <p id="xPosisjon"> X-posisjon: </p>
+    <p id="yPosisjon"> Y-posisjon: </p>
   </body>
 
   <script>
+    var xPosisjonEl = document.querySelector("#xPosisjon");
+    var yPosisjonEl = document.querySelector("#yPosisjon");
+    var bodyEl = document.querySelector("body");
 
+    bodyEl.addEventListener("mousemove", visPosisjon);
+
+    function visPosisjon(e) {
+      xPosisjonEl.innerHTML = "X-posisjon: " + e.clientX;
+      yPosisjonEl.innerHTML = "Y-posisjon: " + e.clientY
+    }
   </script>
 </html>
