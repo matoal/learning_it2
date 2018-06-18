@@ -6,15 +6,19 @@
       <link rel="stylesheet" href="stilark.css">
   </head>
   <body>
-    <h1>Dette er min overskrift</h1>
+    <p> Trykk på meg! </p>
   </body>
   <script>
-    overskriftEl = document.querySelector("h1");
-    overskriftEl.addEventListener("click", minFunksjon);
+    var avsnittEl = document.querySelector("p");
+    avsnittEl.addEventListener("click", nytekst);
 
-    function minFunksjon() {
-      console.log("du har ikke klikket på min overskrift")
-
+    function nytekst() {
+      avsnittEl.innerHTML="Du trykket på meg";
+      if(avsnittEl.className=="gul"){
+        avsnittEl.className="bla";
+      }else{
+      avsnittEl.className="gul";
+      }
     }
   </script>
 </html>
