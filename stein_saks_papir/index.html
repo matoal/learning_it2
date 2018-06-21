@@ -52,6 +52,15 @@
         spillerPoengsum ++;
         spillerPoengsumEl.innerHTML="<b>Spiller:</b> " + spillerPoengsum;
       }
+      function tilbakestillMaskin() {
+        maskinEl.src = "bilder/maskin_ukjent.png";
+        steinEl.addEventListener("click", sjekkResultat);
+        saksEl.addEventListener("click", sjekkResultat);
+        papirEl.addEventListener("click", sjekkResultat);
+        steinEl.style.cursor="pointer";
+        saksEl.style.cursor="pointer";
+        papirEl.style.cursor="pointer";
+      }
 
       function sjekkResultat(e) {
         //Henter ut spllerens valg
@@ -66,8 +75,17 @@
         }else {
           maskinValg="papir";
         }
+        //fjerner mulighet for å trykke på nytt med en gang
+        steinEl.removeEventListener("click", sjekkResultat);
+        saksEl.removeEventListener("click", sjekkResultat);
+        papirEl.removeEventListener("click", sjekkResultat);
+        //Endrer cursor tilbake til normalt
+        steinEl.style.cursor="auto";
+        saksEl.style.cursor="auto";
+        papirEl.style.cursor="auto";
         //Maskinen får valgt bilde.
-        maskinEl.src="bilder/maskin_"+maskinValg + ".png"
+        maskinEl.src="bilder/maskin_"+maskinValg + ".png";
+
 
         //Sjekker hvem som vinner runden.
         if (maskinValg===spillerValg) {
@@ -111,6 +129,8 @@
             beskjedEl.innerHTML="Æsj du tapte mot maskinen...";
           }
 
+        } else {
+          setTimeout(tilbakestillMaskin, 1500);
         }
       }
 
