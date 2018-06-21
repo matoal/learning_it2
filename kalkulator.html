@@ -16,27 +16,33 @@
       <input type="radio" name="regneart" id="gange">Gange<br>
       <input type="radio" name="regneart" id="dele">Dele<br><br>
       Tall 1
-      <input id="tall1" type="number">
+      <input id="tall1" type="number" value=0>
       Tall 2
-      <input id="tall2" type="number">
-      <button id="kalkuler">Kalkuler</button>
+      <input id="tall2" type="number" value=0>
       <p id="resultat"></p>
 
     </div>
     <script>
-      var kalkulerEl = document.querySelector("#kalkuler");
-      kalkulerEl.addEventListener("click", regnUt);
+      var tall1El = document.querySelector("#tall1");
+      var tall2El = document.querySelector("#tall2");
+      
+      var leggSammenEl = document.querySelector("#leggSammen");
+      var trekkFraEl = document.querySelector("#trekkFra");
+      var gangeEl = document.querySelector("#gange");
+      var deleEl = document.querySelector("#dele");
+
+      tall1El.addEventListener("input", regnUt);
+      tall2El.addEventListener("input", regnUt);
+
+      leggSammenEl.addEventListener("click", regnUt);
+      trekkFraEl.addEventListener("click", regnUt);
+      gangeEl.addEventListener("click", regnUt);
+      deleEl.addEventListener("click", regnUt);
+
       function regnUt() {
-        var tall1El = document.querySelector("#tall1");
-        var tall2El = document.querySelector("#tall2");
         var tall1 = Number(tall1El.value);
         var tall2 = Number(tall2El.value);
         var resultatEl = document.querySelector("#resultat");
-
-        var leggSammenEl = document.querySelector("#leggSammen");
-        var trekkFraEl = document.querySelector("#trekkFra");
-        var gangeEl = document.querySelector("#gange");
-        var deleEl = document.querySelector("#dele");
 
         if(leggSammenEl.checked){
           var resultat = tall1+tall2;
