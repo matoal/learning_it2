@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Brukerinput</title>
+      <link rel="stylesheet" href="stilark.css">
+  </head>
+
+  <body>
+    <div>
+      <h1>Enkel Kalkulator</h1>
+      <p>Velg hva kalkulatoren skal gjøre med tallene</p>
+
+      <input type="radio" name="regneart" id="leggSammen">Legg sammen<br>
+      <input type="radio" name="regneart" id="trekkFra">Trekk i fra<br>
+      <input type="radio" name="regneart" id="gange">Gange<br>
+      <input type="radio" name="regneart" id="dele">Dele<br><br>
+      Tall 1
+      <input id="tall1" type="number">
+      Tall 2
+      <input id="tall2" type="number">
+      <button id="kalkuler">Kalkuler</button>
+      <p id="resultat"></p>
+
+    </div>
+    <script>
+      var kalkulerEl = document.querySelector("#kalkuler");
+      kalkulerEl.addEventListener("click", regnUt);
+      function regnUt() {
+        var tall1El = document.querySelector("#tall1");
+        var tall2El = document.querySelector("#tall2");
+        var tall1 = Number(tall1El.value);
+        var tall2 = Number(tall2El.value);
+        var resultatEl = document.querySelector("#resultat");
+
+        var leggSammenEl = document.querySelector("#leggSammen");
+        var trekkFraEl = document.querySelector("#trekkFra");
+        var gangeEl = document.querySelector("#gange");
+        var deleEl = document.querySelector("#dele");
+
+        if(leggSammenEl.checked){
+          var resultat = tall1+tall2;
+          var tekst = "Summen av ";
+        } else if (trekkFra.checked) {
+          var resultat = tall1 - tall2;
+          var tekst = "Differansen mellom ";
+        } else if (gangeEl.checked) {
+          var resultat = tall1*tall2;
+          var tekst = "Produktet av ";
+        } else if (deleEl.checked) {
+          var resultat = tall1/tall2;
+          var tekst = "Kvotienten av "
+        } else{
+          resultatEl.innerHTML="Du må velge en regneart!!"
+          return;
+        }
+
+        resultatEl.innerHTML = tekst + tall1 + " og " + tall2 + " er " + resultat
+      }
+
+    </script>
+  </body>
+
+</html>
