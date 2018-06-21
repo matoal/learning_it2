@@ -17,6 +17,7 @@
         <img id="maskin" src="bilder/maskin_ukjent.png" width="200" height="200" alt="maskin ukjent">
       </div>
       <p id="beskjed"> </p>
+      <button>Reset</button>
     </div>
     <script>
       //Setter poengsum ved oppstart av spillet
@@ -34,10 +35,19 @@
       var saksEl = document.querySelector("#saks");
       var papirEl = document.querySelector("#papir");
       var maskinEl = document.querySelector("#maskin");
+      var buttonEl = document.querySelector("button");
 
       steinEl.addEventListener("click", sjekkResultat);
       saksEl.addEventListener("click", sjekkResultat);
       papirEl.addEventListener("click", sjekkResultat);
+      buttonEl.addEventListener("click", omstart);
+      function omstart() {
+        beskjedEl.innerHTML="Trykk på stein saks eller papir for å spille mot maskinen. Førstemann til " + VINNERSUM + " poeng vinner spillet";
+        spillerPoengsum = 0;
+        maskinPoengsum = 0;
+        maskinPoengsumEl.innerHTML="<b>Maskin:</b> " + maskinPoengsum;
+        spillerPoengsumEl.innerHTML="<b>Spiller:</b> " + spillerPoengsum;
+      }
 
       beskjedEl.innerHTML="Trykk på stein saks eller papir for å spille mot maskinen. Førstemann til " + VINNERSUM + " poeng vinner spillet";
       //Det som gjøres når maskin vinner runden
@@ -45,6 +55,7 @@
         beskjedEl.innerHTML="Maskinen vant runden";
         maskinPoengsum ++;
         maskinPoengsumEl.innerHTML="<b>Maskin:</b> " + maskinPoengsum;
+
       }
       //Det som gjøres når spiller vinner runden
       function spillerVinner() {
@@ -60,6 +71,7 @@
         steinEl.style.cursor="pointer";
         saksEl.style.cursor="pointer";
         papirEl.style.cursor="pointer";
+        beskjedEl.innerHTML="Ny runde. Trykk for å spille"
       }
 
       function sjekkResultat(e) {
@@ -133,6 +145,7 @@
           setTimeout(tilbakestillMaskin, 1500);
         }
       }
+
 
     </script>
   </body>
