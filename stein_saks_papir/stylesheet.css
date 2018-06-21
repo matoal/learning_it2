@@ -16,6 +16,9 @@ body{
   display: flex;
   justify-content: space-between;
 }
-#maskinBilde{
+#maskin{
   margin-left: 80px;
+}
+#stein, #saks, #papir{
+  cursor: pointer;
 }
