@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Array</title>
+      <link rel="stylesheet" href="stilark.css">
+  </head>
+
+  <body>
+    <p>Dette er en test</p>
+    <script>
+      var tall = [2,4,6,8]
+      tall.pop(); //fjerne siste tallet(8)
+      tall.shift(); //fjerner første tallet(2)
+      tall.splice(1,0,5);//splitter array ved index 1, sletter 0 og legger til tallet 5
+      tall.push(7); //legger til 7 bakerst
+      tall.unshift(3); //legger til 3 forran
+      console.log(tall);
+      tall.splice(tall.indexOf(3),1,"tre");
+      tall.splice(tall.indexOf(5),1,"fem");
+      tall.splice(tall.indexOf(7),1,"g");
+      console.log(tall);
+      console.log(minsteTall(tall));
+      console.log(gjennomsnitt(tall))
+
+      function minsteTall(tall) {
+        minste = tall[0];
+        for (var i = 0; i < tall.length; i++) {
+          if (tall[i]<minste) {
+            minste = tall[i];
+          }
+        }
+        return minste
+      }
+      function gjennomsnitt(tallArray) {
+        var sum = 0;
+        for (var i = 0; i < tallArray.length; i++) {
+          sum += tallArray[i];
+        }
+        gjennomsnitt = sum/tallArray.length;
+        return gjennomsnitt
+      }
+
+    </script>
+  </body>
+
+</html>

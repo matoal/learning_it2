@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>TITLE</title>
+      <link rel="stylesheet" href="stilark.css">
+  </head>
+
+  <body>
+    <script src="funksjoner.js"></script>
+    <script>
+      var gangeTabell = [];
+      var lengde = 10;
+      var bredde = 12;
+      for (var i = 1; i <= lengde; i++) {
+        rad = []
+        for (var j = 1; j <= bredde; j++) {
+          rad.push(i*j)
+        }
+        gangeTabell.push(rad)
+      }
+      console.log(gangeTabell);
+
+      //Sortering
+      tall =[2,5,43,1,-98,54]
+      console.log(tall.sort(sammenlignTall));
+
+      var personer = [["Hans",12],["Nils",3],["Sofie",5]];
+      console.log(personer.sort(sammenlignArrayer));
+    </script>
+  </body>
+
+</html>

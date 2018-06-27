@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Favoritt Frukt</title>
+      <link rel="stylesheet" href="stilark.css">
+  </head>
+
+  <body>
+    <h1>Velg dine favoritt frukter så skriver vi de ut for deg</h1>
+    <h2>Utskrift.</h2>
+  <script>
+      var bodyEl = document.querySelector("body");
+      var frukt = ["Appelsin", "Eple", "Jordbær", "Banan", "Pære"];
+      for (var i = 0; i < frukt.length; i++) {
+        nyCheckboksEl = document.createElement("input");
+        nyTekst = document.createElement("p")
+        nyCheckboksEl.type="checkbox";
+        nyCheckboksEl.value = frukt[i];
+        nyCheckboksEl.name="frukt"
+        nyTekst.innerHTML=frukt[i] + "<br>";
+        nyCheckboksEl.addEventListener("input", utskrift);
+        bodyEl.appendChild(nyCheckboksEl);
+        bodyEl.appendChild(nyTekst);
+      }
+      function utskrift() {
+          var frukt = [];
+          var valgteEl = document.querySelectorAll("input[type='checkbox']");
+          for (var i = 0; i < valgteEl.length; i++) {
+            if (valgteEl[i].checked) {
+              frukt.push(valgteEl[i].value)
+            }
+          }
+          var utskriftEl = document.querySelector("h2");
+          if(frukt.length>1){
+            utskriftEl.innerHTML="Dine favorittfrukter er ";
+            for (var i = 0; i < frukt.length-1; i++) {
+              utskriftEl.innerHTML += frukt[i] + ", ";
+            }
+            utskriftEl.innerHTML=utskriftEl.innerHTML.slice(0,utskriftEl.innerHTML.length-2);
+            utskriftEl.innerHTML += " og " + frukt[frukt.length-1] + ".";
+          } else if (frukt.length == 1) {
+            utskriftEl.innerHTML = "Din favorittfrukt er " + frukt[0] + ".";
+          } else {
+            utskriftEl.innerHTML = "Du har ingen favorittfrukter... :("
+          }
+
+      }
+  </script>
+  </body>
+
+</html>
