@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Objekter</title>
+      <link rel="stylesheet" href="stilark.css">
+  </head>
+
+  <body>
+    <script src="funksjoner.js"></script>
+    <script>
+      var land={
+        navn:"Norge",
+        hovedstad:"Oslo",
+        myntenhet:"NOK"
+      }
+      land.storsteByer = ["Sandnes", "Trondheim", "Bergen"]
+      for (var s in land) {
+        console.log(land[s]);
+      }
+      delete land.myntenhet;
+      console.log(land);
+
+      var person = {
+        fornavn: "Per",
+        etternavn: "Hansen",
+        middag: ["Pizza", "Pasta", "taco", "Nachos"],
+        fultNavn: function() {
+          return this.fornavn + " " + this.etternavn;
+        },
+        hvaSkalJegHaTilMiddag: function(){
+          return this.middag[Math.floor(Math.random()*this.middag.length)];
+        }
+      }
+      console.log(person.hvaSkalJegHaTilMiddag());
+
+      var bilmerker = [
+        {navn:"Volkswagen",
+        forkortelse:"VW",
+        land:"Tyskland"}
+        ,
+        {navn:"Volvo",
+        forkortelse:"V",
+        land:"Sverige"}
+        ,
+        {navn:"Opel",
+        forkortelse:"O",
+        land:"Danmark"}
+      ];
+      for (var i = 0; i < bilmerker.length; i++) {
+        console.log(bilmerker[i].navn + " har forkortelse " + bilmerker[i].forkortelse + " og er produsert i " + bilmerker[i].land + ".")
+      }
+      console.log(bilmerker.sort(sammenlignLand));
+    </script>
+  </body>
+
+</html>
