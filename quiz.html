@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>QUIZ</title>
+      <link rel="stylesheet" href="stilark.css">
+      <link rel="stylesheet" href="quiz.css">
+  </head>
+
+  <body>
+
+    <div class="innpakning">
+      <h1> Quiz </h1>
+      <p class="resultat">test</p>
+    </div>
+
+    <!-- <script src="funksjoner.js"></script> -->
+    <script>
+      var innpakningEl = document.querySelector(".innpakning");
+      var resultatEl = document.querySelector(".resultat");
+
+      var quiz = [
+        { sporsmaal: "Hva heter Norges hovedstad?",
+          alternativer: ["Oslo", "Stockholm", "København"],
+          fasit: ["riktig", "galt", "galt"]},
+        { sporsmaal: "Hvike byer ligger i europa?",
+          alternativer: ["Oslo", "New York", "London"],
+          fasit: ["riktig", "galt", "riktig"]}
+      ];
+      for (var i = 0; i < quiz.length; i++) {
+        var sporsmaalEl = document.createElement("p");
+        sporsmaalEl.innerHTML += "<h3>" + quiz[i].sporsmaal + "</h3>";
+        for (var j = 0; j < quiz[i].alternativer.length; j++) {
+          var nyCheckbox = document.createElement("input");
+          nyCheckbox.type = "checkbox";
+          nyCheckbox.value = quiz[i].fasit[j];
+          sporsmaalEl.appendChild(nyCheckbox);
+          sporsmaalEl.innerHTML += quiz[i].alternativer[j] + "<br>"
+          quiz[i].alternativer[j]
+        }
+
+        innpakningEl.appendChild(sporsmaalEl);
+      }
+
+      var knapp = document.createElement("button");
+      knapp.innerHTML = "Sjekk svar";
+      knapp.addEventListener("click", finnPoeng);
+      innpakningEl.appendChild(knapp)
+
+      function finnPoeng() {
+        var allCheckboxEl = document.querySelectorAll("input[type='checkbox']");
+        var antallPoeng = 0;
+        for (var i = 0; i < allCheckboxEl.length; i++) {
+          if (allCheckboxEl[i].checked) {
+            if (allCheckboxEl[i].value==="riktig") {
+              antallPoeng ++;
+            }else {
+              antallPoeng --;
+            }
+          }
+        }
+        resultatEl.innerHTML= "Du fikk " + antallPoeng + " poeng!";
+      }
+
+    </script>
+
+  </body>
+
+</html>
